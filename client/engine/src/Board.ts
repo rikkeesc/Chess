@@ -1,5 +1,5 @@
-import { Square } from './Square'
-import { SquareColor } from './Square'
+import { Square } from './square'
+import { SquareColor } from './square'
 
 export class Board{
 
