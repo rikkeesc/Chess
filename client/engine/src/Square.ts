@@ -3,15 +3,15 @@ import { Piece } from './Piece'
 
 export type SquareColor = 'white' | 'black'
 
-export class Square{
+export class Square {
 
     private _x: number;
     private _y: number;
     private _hasPiece: boolean;
     private _color: SquareColor;
-    private _piece: Piece;
+    private _piece: Piece | null;
 
-    public constructor(x: number, y: number, hasPiece: boolean, color:SquareColor, piece: Piece){
+    public constructor(x: number, y: number, hasPiece: boolean, color: SquareColor, piece: Piece | null){
         this._x = x
         this._y = y
         this._hasPiece = hasPiece
@@ -53,20 +53,21 @@ export class Square{
         return this._color;
     }
 
-    public set color(value: SquareColor) {
-        this._color = value;
+    public set color(color: SquareColor) {
+        this._color = color;
     }
 
-    public get piece(): Piece {
+    public get piece(): Piece | null {
         return this._piece;
     }
 
-    public set piece(value: piece) {
-        this._piece = piece
+    public set piece(newPiece: Piece | null) {
+        this._piece = newPiece;
     }
 
     public removePiece(){
         this.hasPiece = false;
+        this.piece = null;
     }
 
 
