@@ -1,6 +1,12 @@
 import { Square } from './Square'
 import { SquareColor } from './Square'
 import { PieceType as PieceType, Piece } from './Piece'
+import { Bishop } from './pieces/Bishop'
+import { King } from './pieces/King'
+import { Queen } from './pieces/Queen'
+import { Pawn } from './pieces/Pawn'
+import { Rook } from './pieces/Rook'
+import { Knight } from './pieces/Knight'
 
 export class Board{
 
@@ -51,7 +57,7 @@ export class Board{
         }
       }
 
-      private placePiece(x: number, y: number, isWhite: Boolean, pType: string): void{
+      private placePiece(x: number, y: number, isWhite: boolean, pType: string): void{
         const square = this.getSquare(x, y);
         let piece!: Piece
         switch (pType) {
