@@ -57,8 +57,12 @@ export class Square {
         this._color = color;
     }
 
-    public get piece(): Piece | null {
-        return this._piece;
+    public get piece(): Piece {
+        if (this._piece != null) {
+            return this._piece;
+        }
+        throw new Error("This square is empty");
+        
     }
 
     public set piece(newPiece: Piece | null) {
