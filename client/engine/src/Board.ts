@@ -11,8 +11,10 @@ import { Knight } from './pieces/Knight'
 export class Board{
 
     readonly squares: Square[][] = []
+    private isWhiteTurn : boolean;
 
     constructor() {
+      this.isWhiteTurn = true;
       this.initSquares()
       this.setUpBoard()
       }
@@ -108,7 +110,17 @@ export class Board{
         target.piece = origin.piece;
         target.hasPiece = true;
         origin.removePiece;
+        this.isWhiteTurn = !this.isWhiteTurn;
       }
 
-      
+      public getValidMoves(square : Square): Square[] {
+        let validMoves : Square[] = [];
+        if (square.hasPiece) {
+          const p : Piece = square.piece;
+          if (p.isWhite != this.isWhiteTurn) {
+            validMoves = p.getValidMoves();
+          }
+        }
+        return validMoves;
+      }
 }
