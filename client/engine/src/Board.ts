@@ -103,4 +103,12 @@ export class Board{
           return pieces.filter(p => !p.isWhite);
         }
       }
+
+      public movePiece(origin : Square, target : Square) : void {
+        target.piece = origin.piece;
+        target.hasPiece = true;
+        origin.removePiece;
+      }
+
+      
 }
