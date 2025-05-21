@@ -3,9 +3,9 @@ import { Square } from "../Square";
 
 export class Rook extends Piece {
 
-    isValidMove(target: Square): boolean {
+    getValidMoves(): Square[] {
         // TODO: implement movement logic
-        return true;
+        return [];
       }
     
 }

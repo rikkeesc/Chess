@@ -62,29 +62,29 @@ export class Board{
         let piece!: Piece
         switch (pType) {
           case PieceType.Pawn:
-              piece = new Pawn(isWhite, pType, square)
+              piece = new Pawn(isWhite, pType, square, this)
               break
           case PieceType.Rook:
-              piece = new Rook(isWhite, pType, square)
+              piece = new Rook(isWhite, pType, square, this)
               break
           case PieceType.Knight:
-              piece = new Knight(isWhite, pType, square)
+              piece = new Knight(isWhite, pType, square, this)
               break
           case PieceType.Bishop:
-              piece = new Bishop(isWhite, pType, square)
+              piece = new Bishop(isWhite, pType, square, this)
               break
           case PieceType.Queen:
-              piece = new Queen(isWhite, pType, square)
+              piece = new Queen(isWhite, pType, square, this)
               break
           case PieceType.King:
-              piece = new King(isWhite, pType, square)
+              piece = new King(isWhite, pType, square, this)
               break
         }
         square.piece = piece
       }
 
 
-      private getSquare(x: number, y: number): Square {
+      public getSquare(x: number, y: number): Square {
         if (x < 0 || x > 7 || y < 0 || y > 7) {
           throw new Error(`Coordinates out of bounds: (${x},${y})`)
         }

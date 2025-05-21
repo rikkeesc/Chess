@@ -1,4 +1,5 @@
 import { Square } from './Square';
+import { Board } from './Board';
 
 export enum PieceType {
     Pawn = "Pawn",
@@ -13,14 +14,16 @@ export abstract class Piece {
     private _isWhite : boolean;
     private _pieceType : PieceType;
     private _currentSquare : Square;
+    private _board : Board;
 
-    constructor(isWhite: boolean, pieceType: PieceType, currentSquare: Square) {
+    constructor(isWhite: boolean, pieceType: PieceType, currentSquare: Square, board : Board) {
         this._isWhite = isWhite;
         this._pieceType = pieceType;
         this._currentSquare = currentSquare;
+        this._board = board;
     }
     
-    abstract isValidMove(square: Square): boolean;
+    abstract getValidMoves(): Square[];
 
     public movePiece(square: Square): void {
         this._currentSquare.removePiece();
@@ -38,6 +41,10 @@ export abstract class Piece {
 
     public get CurrentSquare() : Square {
         return this._currentSquare;
+    }
+
+    public get board() : Board {
+        return this._board;
     }
 
 }
