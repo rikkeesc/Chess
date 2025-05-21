@@ -90,4 +90,17 @@ export class Board{
         }
         return this.squares[x][y]
       }
+
+      public getPieces(isWhite? : boolean) : Piece[] {
+        const pieces : Piece[] = this.squares.flat().filter(s => s.hasPiece).map(s => s.piece);
+        if (isWhite == undefined) {
+          return pieces;
+        }
+        else if (isWhite == true) {
+          return pieces.filter(p => p.isWhite);
+        }
+        else {
+          return pieces.filter(p => !p.isWhite);
+        }
+      }
 }
