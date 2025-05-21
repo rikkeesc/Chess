@@ -1,24 +1,24 @@
-import { Square } from './square';
+import { Square } from './Square';
 import { Board } from './Board';
 
-export enum type {
-    p = "pawn",
-    k = "king",
-    q = "queen",
-    b = "bishop",
-    s = "knight",
-    r = "rook"
+export enum PieceType {
+    Pawn = "Pawn",
+    King = "King",
+    Queen = "Queen",
+    Bishop = "Bishop",
+    Knight = "Knight",
+    Rook = "Rook"
 }
 
 export abstract class Piece {
     private _isWhite : boolean;
-    private _type : type;
+    private _pieceType : PieceType;
     private _currentSquare : Square;
     private _board : Board;
 
-    constructor(isWhite: boolean, type: type, currentSquare: Square, board : Board) {
+    constructor(isWhite: boolean, pieceType: PieceType, currentSquare: Square, board : Board) {
         this._isWhite = isWhite;
-        this._type = type;
+        this._pieceType = pieceType;
         this._currentSquare = currentSquare;
         this._board = board;
     }
@@ -35,8 +35,8 @@ export abstract class Piece {
         return this._isWhite;
     }
 
-    public get type() : type {
-        return this._type;
+    public get pieceType() : PieceType {
+        return this._pieceType;
     }
 
     public get CurrentSquare() : Square {

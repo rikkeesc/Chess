@@ -1,5 +1,5 @@
 import { Piece } from "../Piece";
-import { Square } from "../square";
+import { Square } from "../Square";
 
 export class Pawn extends Piece {
 
