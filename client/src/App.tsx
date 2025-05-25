@@ -1,4 +1,5 @@
 import "./App.css";
+import { Board } from "../engine/src/Board";
 
 // Unicode chess pieces
 const PIECES: Record<string, string> = {

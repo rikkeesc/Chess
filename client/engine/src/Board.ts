@@ -1,5 +1,5 @@
 import { Square } from './Square'
-import { SquareColor } from './Square'
+import type { SquareColor } from './Square'
 import { PieceType as PieceType, Piece } from './Piece'
 import { Bishop } from './pieces/Bishop'
 import { King } from './pieces/King'
@@ -122,5 +122,20 @@ export class Board{
           }
         }
         return validMoves;
+      }
+
+      public getBoard() : string[][] {
+        let stringboard : string[][] = [];
+        for (let x = 0; x < 8; x++) {
+          for (let y = 0; y < 8; y++) {
+            if (this.squares[x][y].hasPiece) {
+              stringboard[x][y] = this.squares[x][y].piece.pieceType;
+            }
+            else {
+              stringboard[x][y] = "";
+            }
+          }
+        }
+        return stringboard;
       }
 }
