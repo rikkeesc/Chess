@@ -1,16 +1,16 @@
 import { Square } from './Square';
 import { Board } from './Board';
 
-export const PIECE_TYPE = {
-    Pawn:   'Pawn',
-    Knight: 'Knight',
-    Bishop: 'Bishop',
-    Rook:   'Rook',
-    Queen:  'Queen',
-    King:   'King',
-  } as const;
+export type PieceType = "Pawn" | "King" | "Queen" | "Bishop" | "Knight" | "Rook";
 
-export type PieceType = typeof PIECE_TYPE[keyof typeof PIECE_TYPE];
+export const PieceType = {
+    Pawn: "Pawn",
+    King: "King",
+    Queen: "Queen",
+    Bishop: "Bishop",
+    Knight: "Knight",
+    Rook: "Rook"
+} as const;
 
 export abstract class Piece {
     private _isWhite : boolean;

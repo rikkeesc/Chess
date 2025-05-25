@@ -1,20 +1,20 @@
 import type { SquareColor } from './Square'
 import { Square } from './Square'
-import type { PieceType } from './Piece';
-import { Piece } from './Piece';
-import { Pawn } from './pieces/Pawn';
-import { Bishop } from './pieces/Bishop';
-import { King } from './pieces/King';
-import { Knight } from './pieces/Knight';
-import { Queen } from './pieces/Queen';
-import { Rook } from './pieces/Rook';
-
+import { PieceType as PieceType, Piece } from './Piece'
+import { Bishop } from './pieces/Bishop'
+import { King } from './pieces/King'
+import { Queen } from './pieces/Queen'
+import { Pawn } from './pieces/Pawn'
+import { Rook } from './pieces/Rook'
+import { Knight } from './pieces/Knight'
 
 export class Board{
 
     readonly squares: Square[][] = []
+    private isWhiteTurn : boolean;
 
     constructor() {
+      this.isWhiteTurn = true;
       this.initSquares()
       this.setUpBoard()
       }
@@ -106,5 +106,38 @@ export class Board{
         else {
           return pieces.filter(p => !p.isWhite);
         }
+      }
+
+      public movePiece(origin : Square, target : Square) : void {
+        target.piece = origin.piece;
+        target.hasPiece = true;
+        origin.removePiece;
+        this.isWhiteTurn = !this.isWhiteTurn;
+      }
+
+      public getValidMoves(square : Square): Square[] {
+        let validMoves : Square[] = [];
+        if (square.hasPiece) {
+          const p : Piece = square.piece;
+          if (p.isWhite != this.isWhiteTurn) {
+            validMoves = p.getValidMoves();
+          }
+        }
+        return validMoves;
+      }
+
+      public getBoard() : string[][] {
+        let stringboard : string[][] = [];
+        for (let x = 0; x < 8; x++) {
+          for (let y = 0; y < 8; y++) {
+            if (this.squares[x][y].hasPiece) {
+              stringboard[x][y] = this.squares[x][y].piece.pieceType;
+            }
+            else {
+              stringboard[x][y] = "";
+            }
+          }
+        }
+        return stringboard;
       }
 }
