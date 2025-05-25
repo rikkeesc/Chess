@@ -1,3 +1,4 @@
+import type { SquareColor } from './Square'
 import { Square } from './Square'
 import type { SquareColor } from './Square'
 import { PieceType as PieceType, Piece } from './Piece'
@@ -37,50 +38,52 @@ export class Board{
       private setUpBoard(): void{
         //setup board with correct pieces
         const backRank: PieceType[] = [
-          PieceType.Rook,
-          PieceType.Knight,
-          PieceType.Bishop,
-          PieceType.Queen,
-          PieceType.King,
-          PieceType.Bishop,
-          PieceType.Knight,
-          PieceType.Rook,
+          'Rook',
+          'Knight',
+          'Bishop',
+          'Queen',
+          'King',
+          'Bishop',
+          'Knight',
+          'Rook',
       ]
       // White pieces
       backRank.forEach((pType, x) => this.placePiece(x, 0, true, pType))
       for (let x = 0; x < 8; x++) {
-          this.placePiece(x, 1, true, PieceType.Pawn)
+          this.placePiece(x, 1, true, 'Pawn')
         }
       
       //black pieces
       backRank.forEach((pType, x) => this.placePiece(x, 7, false, pType))
       for (let x = 0; x < 8; x++) {
-          this.placePiece(x, 6, false, PieceType.Pawn)
+          this.placePiece(x, 6, false, 'Pawn')
         }
       }
 
-      private placePiece(x: number, y: number, isWhite: boolean, pType: string): void{
+      private placePiece(x: number, y: number, isWhite: boolean, pType: PieceType): void{
         const square = this.getSquare(x, y);
         let piece!: Piece
         switch (pType) {
-          case PieceType.Pawn:
+          case 'Pawn':
               piece = new Pawn(isWhite, pType, square, this)
               break
-          case PieceType.Rook:
+          case 'Rook':
               piece = new Rook(isWhite, pType, square, this)
               break
-          case PieceType.Knight:
+          case 'Knight':
               piece = new Knight(isWhite, pType, square, this)
               break
-          case PieceType.Bishop:
+          case 'Bishop':
               piece = new Bishop(isWhite, pType, square, this)
               break
-          case PieceType.Queen:
+          case 'Queen':
               piece = new Queen(isWhite, pType, square, this)
               break
-          case PieceType.King:
+          case 'King':
               piece = new King(isWhite, pType, square, this)
               break
+          default:
+              throw new Error(`Unknown piece type: ${pType}`);
         }
         square.piece = piece
       }
