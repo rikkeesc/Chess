@@ -1,14 +1,16 @@
 import { Square } from './Square';
 import { Board } from './Board';
 
-export enum PieceType {
-    Pawn = "Pawn",
-    King = "King",
-    Queen = "Queen",
-    Bishop = "Bishop",
-    Knight = "Knight",
-    Rook = "Rook"
-}
+export const PIECE_TYPE = {
+    Pawn:   'Pawn',
+    Knight: 'Knight',
+    Bishop: 'Bishop',
+    Rook:   'Rook',
+    Queen:  'Queen',
+    King:   'King',
+  } as const;
+
+export type PieceType = typeof PIECE_TYPE[keyof typeof PIECE_TYPE];
 
 export abstract class Piece {
     private _isWhite : boolean;
