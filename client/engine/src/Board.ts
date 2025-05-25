@@ -1,6 +1,5 @@
 import type { SquareColor } from './Square'
 import { Square } from './Square'
-import type { SquareColor } from './Square'
 import { PieceType as PieceType, Piece } from './Piece'
 import { Bishop } from './pieces/Bishop'
 import { King } from './pieces/King'
